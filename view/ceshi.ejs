@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/weui.min.css">
+
+</head>
+<body>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">用户名</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text"  placeholder="请输入用户名" id="user">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="password" pattern="[0-9]*" placeholder="请输入密码" id="psw">
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" style="margin-top: 20px" id="submit">登录</a>
+<script src="public/js/jquery-2.1.4.js"></script>
+<script src="public/js/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+    $("#submit").click(function () {
+      var name = $("#user").val()
+      var psw = $("#psw").val()
+      $.ajax({
+        type: "post",
+        url: "/login/loginForm",
+        dataType: "json",
+        data:{name:name, password:psw},
+        success:function (data) {
+
+        }
+      });
+    })
+
+  });
+</script>
+<script src="public/js/jquery-weui.min.js"></script>
+
+</body>
+</html>  
