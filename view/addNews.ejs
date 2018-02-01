@@ -1,0 +1,59 @@
+
+<!doctype html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/weui.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">新闻标题</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text"  placeholder="请输入新闻标题" id="name">
+        </div>
+    </div>
+    <div class="weui-cells__title">新闻内容</div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="新闻内容" rows="3"id="content"></textarea>
+                <div class="weui-textarea-counter"><span>0</span>/200</div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-uploader__input-box">
+        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+    </div>
+</div>
+<a href="javascript:;" class="weui-btn weui-btn_primary" style="margin-top: 20px" id="submit">保存</a>
+<script src="public/js/jquery-2.1.4.js"></script>
+<script src="public/js/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+    $('#submit').click(function () {
+      var name = $("#name").val()
+      var content = $("#content").val()
+      $.ajax({
+        type: "post",
+        url: "/addNews/add",
+        dataType: "json",
+        data:{name:name, content:content},
+        success:function (data) {
+          if (data.head.resultCode === 200) {
+             alert('添加成功')
+             window.location.href = '/mainList'
+          }
+        }
+      });
+    })
+  });
+</script>
+<script src="public/js/jquery-weui.min.js"></script>
+
+</body>
+</html>

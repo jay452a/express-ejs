@@ -1,0 +1,35 @@
+
+<!doctype html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/weui.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+<div><a href="/addNews">添加</a></div>
+
+<% for(var i=0;i<list.length;i++){%>
+<div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><img src=""></div>
+        <div class="weui-cell__bd">
+            <p><%= list[i].name%></p>
+        </div>
+        <div class="weui-cell__ft"><%= list[i].content%></div>
+    </div>
+</div>
+<%}%>
+<script src="public/js/jquery-2.1.4.js"></script>
+<script src="public/js/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="public/js/jquery-weui.min.js"></script>
+
+</body>
+</html>

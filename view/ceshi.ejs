@@ -6,6 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/weui.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
 
 </head>
 <body>
@@ -38,7 +39,11 @@
         dataType: "json",
         data:{name:name, password:psw},
         success:function (data) {
-
+          if (data.head.resultCode === 200) {
+            window.location.href = '/mainList'
+          } else {
+            $.toast(data.head.msg, "forbidden");
+          }
         }
       });
     })
